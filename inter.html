@@ -5,12 +5,13 @@
     <title>Mobile App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!--<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>-->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 <body class="bg-gradient-to-r from-blue-100 to-purple-100 flex flex-col min-h-screen items-center justify-center">
 
     <!-- Mobile App Frame -->    
-    <div class="w-80 h-[620px] pb-1 rounded-xl shadow-2xl border-4 border-gray-300 flex flex-col overflow-hidden">
+    <div class="w-80 h-[620px] pb-1 rounded-xl shadow-2xl border-4 border-gray-300 flex flex-col overflow-y-scroll">
         <!-- App Header -->
         <div class="px-4 py-2 flex items-center justify-between">
             <span class="font-semibold text-lg">Not 4Get</span>
@@ -31,7 +32,7 @@
           
           <!--scroll y here-->
           <div class="pr-1 overflow-y-scroll h-48 space-y-1">
-            <form id="taskcontainer" class="gap-2 bg-white rounded-xl px-1">
+            <form id="taskcontainer" class="gap-2 bg-white rounded-xl px-1 pb-2">
               <div class="flex justify-between">
               <h2 id="taskname" class=" text-lg pb-1 font-semibold pl-2">Seri Menanti</h2>
               <!--edit task delete button--> 
@@ -47,15 +48,15 @@
                 </svg></button>
               </div>
             </div>
-            <div id="taskbox" class="flex justify-between px-1 pb-2 gap-1 w-full">
-              <h2 class="bg-red-100 text-xs w-3/4 rounded p-1">Task:
+            <div id="taskbox" class="flex justify-between px-1 pb-1 gap-1 w-full">
+              <h2 class="bg-red-100 text-xs w-3/4 rounded p-1 shadow-md">Task:
                 <p>1. Prepare Site Paperwork<br>2. Produce schedule<br>3. Planning with client</p>
               </h2>
               <div class="my-auto text-xs space-y-1">
-                <h2 class="bg-green-200 w-full rounded p-1 whitespace-nowrap">Start Date:
+                <h2 class="bg-green-200 w-full rounded p-1 whitespace-nowrap shadow-sm">Start Date:
                   <p>20/5/2025</p>
                 </h2>
-                <h2 class="bg-teal-100 w-full rounded p-1 whitespace-nowrap">Client:
+                <h2 class="bg-teal-100 w-full rounded p-1 whitespace-nowrap shadow-md">Client:
                   <p>John Doe</p>
                 </h2>
               </div>
@@ -123,40 +124,22 @@
             </form>
           </div>
             
-            <!--Person-->
-            <div class="flex justify-between mt-2">
-            <h2 class="text-md font-semibold my-1">Person Engaged</h2>
-            <button>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
-  <path d="M7 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM14.5 9a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5ZM1.615 16.428a1.224 1.224 0 0 1-.569-1.175 6.002 6.002 0 0 1 11.908 0c.058.467-.172.92-.57 1.174A9.953 9.953 0 0 1 7 18a9.953 9.953 0 0 1-5.385-1.572ZM14.5 16h-.106c.07-.297.088-.611.048-.933a7.47 7.47 0 0 0-1.588-3.755 4.502 4.502 0 0 1 5.874 2.636.818.818 0 0 1-.36.98A7.465 7.465 0 0 1 14.5 16Z" />
-</svg>
-
-            </button>
+          <!--Add Project-->
+          <div id="openprojectform" class=" hidden bg-cyan-100 bg-opacity-70 rounded-2xl mx-auto w-5/6 h-fit p-2">
+            <h2 class="text-lg text-center font-semibold pb-2">Add Your Goal</h2>
+            <h2 class="text-md pl-2">Title:</h2>
+            <input class="px-2 w-full rounded-lg shadow-md" placeholder="Goal/Project/etc:.">
+            <h2 class="text-md pl-2 mt-2">:</h2>
+            <input class="px-2 w-full rounded-lg shadow-md" placeholder="To do list/etc:.">
+            <h2 class="text-md pl-2 mt-2">Date:</h2>
+            <input class="px-2 w-full rounded-lg shadow-md" placeholder="Deadline">
+            <h2 class="text-md pl-2 mt-2">Person:</h2>
+            <input class="px-2 w-full rounded-lg shadow-md" placeholder="Mr. Harison">
+            <div class="flex gap-1 w-full mt-5">
+              <button class="bg-green-300 active:bg-green-400 rounded-xl p-1 w-full">Add</button>
+              <button class="bg-red-300 active:bg-red-400 rounded-xl p-1 w-full">Cancel</button>
             </div>
-            <!--list person here, scroll-->
-          <div class="flex gap-1 overflow-x-scroll pb-1">
-            <div class="bg-white rounded-xl px-2 py-1 flex w-fit shrink-0">
-            <img src="thumbnails/photo1.jpg" id="personphoto" class="rounded-full w-9 h-9 my-auto">
-            <div class="ml-2">
-              <h2 id="personname" class="text-sm font-semibold">Mr. Fakhrul</h2>
-              <p id="personjob" class="text-sm">Lead Engineer</p>
-            </div>
-            </div>
-            <div class="bg-white rounded-xl px-2 py-1 flex w-fit shrink-0">
-            <img src="thumbnails/photo2.png" class="rounded-full w-9 h-9 my-auto">
-            <div id="persondid" class="ml-2">
-              <h2 id="person.name" class="text-sm font-semibold">Mr. Jaafar</h2>
-              <p id="person.position" class="text-sm">Manager</p>
-            </div>
-            </div>
-            <div class="bg-white rounded-xl px-2 py-1 flex w-fit shrink-0">
-            <img src="thumbnails/menphoto.png" class="rounded-full w-9 h-9 my-auto">
-            <div id="persondid" class="ml-2">
-              <h2 id="person.name" class="text-sm font-semibold">Mr. Azhar</h2>
-              <p id="person.position" class="text-sm">Supervisor</p>
-            </div>
-            </div>
-          </div>
+          </div>   
           
         <!--Today Task title-->
         <div class="flex justify-between mt-2">
@@ -214,11 +197,53 @@
                   <button id="finishtask" class="text-xs bg-red-200 rounded p-1">Finish</button>
               </div>
             </div>
-            
-            
+        </div>
+        
+      <!--Add Task card-->
+      <div id="opentaskform" class=" hidden bg-cyan-100 bg-opacity-70 rounded-2xl mx-auto w-5/6 h-fit p-2">
+            <h2 class="text-lg text-center font-semibold pb-2">Add Task Today</h2>
+            <h2 class="text-md pl-2">Description:</h2>
+            <input class="px-2 w-full rounded-lg shadow-md" placeholder="What to do">
+            <div class="flex gap-1 w-full mt-5">
+              <button class="bg-green-300 active:bg-green-400 rounded-xl p-1 w-full">Add</button>
+              <button class="bg-red-300 active:bg-red-400 rounded-xl p-1 w-full">Cancel</button>
+            </div>
       </div>
-        
-        
+
+        <!--Person-->
+            <div class="flex justify-between">
+            <h2 class="text-md font-semibold my-1">Person Engaged</h2>
+            <button>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
+  <path d="M7 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM14.5 9a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5ZM1.615 16.428a1.224 1.224 0 0 1-.569-1.175 6.002 6.002 0 0 1 11.908 0c.058.467-.172.92-.57 1.174A9.953 9.953 0 0 1 7 18a9.953 9.953 0 0 1-5.385-1.572ZM14.5 16h-.106c.07-.297.088-.611.048-.933a7.47 7.47 0 0 0-1.588-3.755 4.502 4.502 0 0 1 5.874 2.636.818.818 0 0 1-.36.98A7.465 7.465 0 0 1 14.5 16Z" />
+</svg>
+
+            </button>
+            </div>
+            <!--list person here, scroll-->
+          <div class="flex gap-1 overflow-x-scroll pb-1">
+            <div class="bg-white rounded-xl px-2 py-1 flex w-fit shrink-0">
+            <img src="thumbnails/photo1.jpg" id="personphoto" class="rounded-full w-9 h-9 my-auto">
+            <div class="ml-2">
+              <h2 id="personname" class="text-sm font-semibold">Mr. Fakhrul</h2>
+              <p id="personjob" class="text-sm">Lead Engineer</p>
+            </div>
+            </div>
+            <div class="bg-white rounded-xl px-2 py-1 flex w-fit shrink-0">
+            <img src="thumbnails/photo2.png" class="rounded-full w-9 h-9 my-auto">
+            <div id="persondid" class="ml-2">
+              <h2 id="person.name" class="text-sm font-semibold">Mr. Jaafar</h2>
+              <p id="person.position" class="text-sm">Manager</p>
+            </div>
+            </div>
+            <div class="bg-white rounded-xl px-2 py-1 flex w-fit shrink-0">
+            <img src="thumbnails/menphoto.png" class="rounded-full w-9 h-9 my-auto">
+            <div id="persondid" class="ml-2">
+              <h2 id="person.name" class="text-sm font-semibold">Mr. Azhar</h2>
+              <p id="person.position" class="text-sm">Supervisor</p>
+            </div>
+            </div>
+          </div>
         
 </div>
 
