@@ -1,252 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Mobile App</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!--<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>-->
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <meta charset="UTF-8">
+  <title>Not 4Get</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
-<body class="bg-gradient-to-r from-blue-100 to-purple-100 flex flex-col min-h-screen items-center justify-center">
-
-    <!-- Mobile App Frame -->    
-    <div class="w-80 h-[620px] pb-1 rounded-xl shadow-2xl border-4 border-gray-300 flex flex-col overflow-y-scroll">
-        <!-- App Header -->
-        <div class="px-4 py-2 flex items-center justify-between">
-            <span class="font-semibold text-lg">Not 4Get</span>
-            <button id="menuBtn" class="focus:outline-none">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
-                     viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M4 6h16M4 12h16M4 18h16"/>
-                </svg>
-            </button>
-        </div>
-        <!-- App Content -->
-<div class="mx-auto justify-center items-center px-4 w-full h-full">
-          <div class="flex justify-between">
-            <h2 class="text-lg font-semibold my-1">Projects</h2>
-            <p id="date" class="my-auto">12 June 2025</p>
-          </div>
-          
-          <!--scroll y here-->
-          <div class="pr-1 overflow-y-scroll h-48 space-y-1">
-            <form id="taskcontainer" class="gap-2 bg-white rounded-xl px-1 pb-2">
-              <div class="flex justify-between">
-              <h2 id="taskname" class=" text-lg pb-1 font-semibold pl-2">Seri Menanti</h2>
-              <!--edit task delete button--> 
-              <div class="flex mr-2 gap-3">
-                <button id="editproject">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
-                  <path d="m5.433 13.917 1.262-3.155A4 4 0 0 1 7.58 9.42l6.92-6.918a2.121 2.121 0 0 1 3 3l-6.92 6.918c-.383.383-.84.685-1.343.886l-3.154 1.262a.5.5 0 0 1-.65-.65Z" />
-                  <path d="M3.5 5.75c0-.69.56-1.25 1.25-1.25H10A.75.75 0 0 0 10 3H4.75A2.75 2.75 0 0 0 2 5.75v9.5A2.75 2.75 0 0 0 4.75 18h9.5A2.75 2.75 0 0 0 17 15.25V10a.75.75 0 0 0-1.5 0v5.25c0 .69-.56 1.25-1.25 1.25h-9.5c-.69 0-1.25-.56-1.25-1.25v-9.5Z" />
-                  </svg></button>
-              <button id="deleteproject">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
-                  <path fill-rule="evenodd" d="M8.75 1A2.75 2.75 0 0 0 6 3.75v.443c-.795.077-1.584.176-2.365.298a.75.75 0 1 0 .23 1.482l.149-.022.841 10.518A2.75 2.75 0 0 0 7.596 19h4.807a2.75 2.75 0 0 0 2.742-2.53l.841-10.52.149.023a.75.75 0 0 0 .23-1.482A41.03 41.03 0 0 0 14 4.193V3.75A2.75 2.75 0 0 0 11.25 1h-2.5ZM10 4c.84 0 1.673.025 2.5.075V3.75c0-.69-.56-1.25-1.25-1.25h-2.5c-.69 0-1.25.56-1.25 1.25v.325C8.327 4.025 9.16 4 10 4ZM8.58 7.72a.75.75 0 0 0-1.5.06l.3 7.5a.75.75 0 1 0 1.5-.06l-.3-7.5Zm4.34.06a.75.75 0 1 0-1.5-.06l-.3 7.5a.75.75 0 1 0 1.5.06l.3-7.5Z" clip-rule="evenodd" />
-                </svg></button>
-              </div>
-            </div>
-            <div id="taskbox" class="flex justify-between px-1 pb-1 gap-1 w-full">
-              <h2 class="bg-red-100 text-xs w-3/4 rounded p-1 shadow-md">Task:
-                <p>1. Prepare Site Paperwork<br>2. Produce schedule<br>3. Planning with client</p>
-              </h2>
-              <div class="my-auto text-xs space-y-1">
-                <h2 class="bg-green-200 w-full rounded p-1 whitespace-nowrap shadow-sm">Start Date:
-                  <p>20/5/2025</p>
-                </h2>
-                <h2 class="bg-teal-100 w-full rounded p-1 whitespace-nowrap shadow-md">Client:
-                  <p>John Doe</p>
-                </h2>
-              </div>
-            </div>
-            </form>
-            <form id="taskcontainer" class="gap-2 bg-white rounded-xl px-1">
-              <div class="flex justify-between">
-              <h2 id="taskname" class=" text-lg pb-1 font-semibold pl-2">Klang Gate</h2>
-              <!--edit task delete button--> 
-              <div class="flex mr-2 gap-3">
-                <button id="editproject">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
-                  <path d="m5.433 13.917 1.262-3.155A4 4 0 0 1 7.58 9.42l6.92-6.918a2.121 2.121 0 0 1 3 3l-6.92 6.918c-.383.383-.84.685-1.343.886l-3.154 1.262a.5.5 0 0 1-.65-.65Z" />
-                  <path d="M3.5 5.75c0-.69.56-1.25 1.25-1.25H10A.75.75 0 0 0 10 3H4.75A2.75 2.75 0 0 0 2 5.75v9.5A2.75 2.75 0 0 0 4.75 18h9.5A2.75 2.75 0 0 0 17 15.25V10a.75.75 0 0 0-1.5 0v5.25c0 .69-.56 1.25-1.25 1.25h-9.5c-.69 0-1.25-.56-1.25-1.25v-9.5Z" />
-                  </svg></button>
-              <button id="deleteproject">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
-                  <path fill-rule="evenodd" d="M8.75 1A2.75 2.75 0 0 0 6 3.75v.443c-.795.077-1.584.176-2.365.298a.75.75 0 1 0 .23 1.482l.149-.022.841 10.518A2.75 2.75 0 0 0 7.596 19h4.807a2.75 2.75 0 0 0 2.742-2.53l.841-10.52.149.023a.75.75 0 0 0 .23-1.482A41.03 41.03 0 0 0 14 4.193V3.75A2.75 2.75 0 0 0 11.25 1h-2.5ZM10 4c.84 0 1.673.025 2.5.075V3.75c0-.69-.56-1.25-1.25-1.25h-2.5c-.69 0-1.25.56-1.25 1.25v.325C8.327 4.025 9.16 4 10 4ZM8.58 7.72a.75.75 0 0 0-1.5.06l.3 7.5a.75.75 0 1 0 1.5-.06l-.3-7.5Zm4.34.06a.75.75 0 1 0-1.5-.06l-.3 7.5a.75.75 0 1 0 1.5.06l.3-7.5Z" clip-rule="evenodd" />
-                </svg></button>
-              </div>
-            </div>
-            <div id="taskbox" class="flex justify-between px-1 pb-2 gap-1 w-full">
-              <h2 class="bg-red-100 text-xs w-3/4 rounded p-1">Task:
-                <p>1. Prepare Site Paperwork<br>2. Produce schedule<br>3. Planning with client</p>
-              </h2>
-              <div class="my-auto text-xs space-y-1">
-                <h2 class="bg-green-200 w-full rounded p-1 whitespace-nowrap">Start Date:
-                  <p>20/5/2025</p>
-                </h2>
-                <h2 class="bg-teal-100 w-full rounded p-1 whitespace-nowrap">Client:
-                  <p>John Doe</p>
-                </h2>
-              </div>
-            </div>
-            </form>
-            <form id="taskcontainer" class="gap-2 bg-white rounded-xl px-1">
-              <div class="flex justify-between">
-              <h2 id="taskname" class=" text-lg pb-1 font-semibold pl-2">Kampung Attap</h2>
-              <!--edit task delete button--> 
-              <div class="flex mr-2 gap-3">
-                <button id="editproject">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
-                  <path d="m5.433 13.917 1.262-3.155A4 4 0 0 1 7.58 9.42l6.92-6.918a2.121 2.121 0 0 1 3 3l-6.92 6.918c-.383.383-.84.685-1.343.886l-3.154 1.262a.5.5 0 0 1-.65-.65Z" />
-                  <path d="M3.5 5.75c0-.69.56-1.25 1.25-1.25H10A.75.75 0 0 0 10 3H4.75A2.75 2.75 0 0 0 2 5.75v9.5A2.75 2.75 0 0 0 4.75 18h9.5A2.75 2.75 0 0 0 17 15.25V10a.75.75 0 0 0-1.5 0v5.25c0 .69-.56 1.25-1.25 1.25h-9.5c-.69 0-1.25-.56-1.25-1.25v-9.5Z" />
-                  </svg></button>
-              <button id="deleteproject">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
-                  <path fill-rule="evenodd" d="M8.75 1A2.75 2.75 0 0 0 6 3.75v.443c-.795.077-1.584.176-2.365.298a.75.75 0 1 0 .23 1.482l.149-.022.841 10.518A2.75 2.75 0 0 0 7.596 19h4.807a2.75 2.75 0 0 0 2.742-2.53l.841-10.52.149.023a.75.75 0 0 0 .23-1.482A41.03 41.03 0 0 0 14 4.193V3.75A2.75 2.75 0 0 0 11.25 1h-2.5ZM10 4c.84 0 1.673.025 2.5.075V3.75c0-.69-.56-1.25-1.25-1.25h-2.5c-.69 0-1.25.56-1.25 1.25v.325C8.327 4.025 9.16 4 10 4ZM8.58 7.72a.75.75 0 0 0-1.5.06l.3 7.5a.75.75 0 1 0 1.5-.06l-.3-7.5Zm4.34.06a.75.75 0 1 0-1.5-.06l-.3 7.5a.75.75 0 1 0 1.5.06l.3-7.5Z" clip-rule="evenodd" />
-                </svg></button>
-              </div>
-            </div>
-            <div id="taskbox" class="flex justify-between px-1 pb-2 gap-1 w-full">
-              <h2 class="bg-red-100 text-xs w-3/4 rounded p-1">Task:
-                <p>1. Prepare Site Paperwork<br>2. Produce schedule<br>3. Planning with client</p>
-              </h2>
-              <div class="my-auto text-xs space-y-1">
-                <h2 class="bg-green-200 w-full rounded p-1 whitespace-nowrap">Start Date:
-                  <p>20/5/2025</p>
-                </h2>
-                <h2 class="bg-teal-100 w-full rounded p-1 whitespace-nowrap">Client:
-                  <p>John Doe</p>
-                </h2>
-              </div>
-            </div>
-            </form>
-          </div>
-            
-          <!--Add Project-->
-          <div id="openprojectform" class=" hidden bg-cyan-100 bg-opacity-70 rounded-2xl mx-auto w-5/6 h-fit p-2">
-            <h2 class="text-lg text-center font-semibold pb-2">Add Your Goal</h2>
-            <h2 class="text-md pl-2">Title:</h2>
-            <input class="px-2 w-full rounded-lg shadow-md" placeholder="Goal/Project/etc:.">
-            <h2 class="text-md pl-2 mt-2">:</h2>
-            <input class="px-2 w-full rounded-lg shadow-md" placeholder="To do list/etc:.">
-            <h2 class="text-md pl-2 mt-2">Date:</h2>
-            <input class="px-2 w-full rounded-lg shadow-md" placeholder="Deadline">
-            <h2 class="text-md pl-2 mt-2">Person:</h2>
-            <input class="px-2 w-full rounded-lg shadow-md" placeholder="Mr. Harison">
-            <div class="flex gap-1 w-full mt-5">
-              <button class="bg-green-300 active:bg-green-400 rounded-xl p-1 w-full">Add</button>
-              <button class="bg-red-300 active:bg-red-400 rounded-xl p-1 w-full">Cancel</button>
-            </div>
-          </div>   
-          
-        <!--Today Task title-->
-        <div class="flex justify-between mt-2">
-            <h2 class="text-md font-semibold my-1">Today Task</h2>
-            <button id="addtask">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm.75-11.25a.75.75 0 0 0-1.5 0v2.5h-2.5a.75.75 0 0 0 0 1.5h2.5v2.5a.75.75 0 0 0 1.5 0v-2.5h2.5a.75.75 0 0 0 0-1.5h-2.5v-2.5Z" clip-rule="evenodd" />
-              </svg></button>
-        </div>
-        <!--tasklist-->
-        <div class="overflow-y-scroll space-y-1 pr-1 h-40">
-            <!--task card-->
-            <div class="flex">
-              <div class="flex bg-white rounded-lg p-2 mr-1 w-full">
-                <h2 id="taskdesc" class="text-md my-auto">Monitor site progress
-                <button id="moretask">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
-                  <path fill-rule="evenodd" d="M15 8A7 7 0 1 0 1 8a7 7 0 0 0 14 0ZM4.75 7.25a.75.75 0 0 0 0 1.5h4.69L8.22 9.97a.75.75 0 1 0 1.06 1.06l2.5-2.5a.75.75 0 0 0 0-1.06l-2.5-2.5a.75.75 0 0 0-1.06 1.06l1.22 1.22H4.75Z" clip-rule="evenodd" />
-                </svg>
-                </button>
-                </h2>
-              </div>
-              <div class="w-1/4 flex flex-col gap-1">
-                  <button id="submittask" class="text-xs h-full bg-green-300 rounded p-1">Submit</button>
-                  <button id="finishtask" class="text-xs h-full bg-red-200 rounded p-1">Finish</button>
-              </div>
-            </div>
-            <div class="flex">
-              <div class="flex bg-white rounded-lg p-2 mr-1 w-full">
-                <h2 id="taskdesc" class="text-md my-auto">Prepare slide progress
-                <button id="moretask">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
-                  <path fill-rule="evenodd" d="M15 8A7 7 0 1 0 1 8a7 7 0 0 0 14 0ZM4.75 7.25a.75.75 0 0 0 0 1.5h4.69L8.22 9.97a.75.75 0 1 0 1.06 1.06l2.5-2.5a.75.75 0 0 0 0-1.06l-2.5-2.5a.75.75 0 0 0-1.06 1.06l1.22 1.22H4.75Z" clip-rule="evenodd" />
-                </svg>
-                </button>
-                </h2>
-              </div>
-              <div class="w-1/4 flex flex-col gap-1">
-                  <button id="submittask" class="text-xs bg-green-300 rounded p-1">Submit</button>
-                  <button id="finishtask" class="text-xs bg-red-200 rounded p-1">Finish</button>
-              </div>
-            </div>
-            <div class="flex">
-              <div class="flex bg-white rounded-lg p-2 mr-1 w-full">
-                <h2 id="taskdesc" class="text-md my-auto">Set meeting with client
-                <button id="moretask">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
-                  <path fill-rule="evenodd" d="M15 8A7 7 0 1 0 1 8a7 7 0 0 0 14 0ZM4.75 7.25a.75.75 0 0 0 0 1.5h4.69L8.22 9.97a.75.75 0 1 0 1.06 1.06l2.5-2.5a.75.75 0 0 0 0-1.06l-2.5-2.5a.75.75 0 0 0-1.06 1.06l1.22 1.22H4.75Z" clip-rule="evenodd" />
-                </svg>
-                </button>
-                </h2>
-              </div>
-              <div class="w-1/4 flex flex-col gap-1">
-                  <button id="submittask" class="text-xs bg-green-300 rounded p-1">Submit</button>
-                  <button id="finishtask" class="text-xs bg-red-200 rounded p-1">Finish</button>
-              </div>
-            </div>
-        </div>
-        
-      <!--Add Task card-->
-      <div id="opentaskform" class=" hidden bg-cyan-100 bg-opacity-70 rounded-2xl mx-auto w-5/6 h-fit p-2">
-            <h2 class="text-lg text-center font-semibold pb-2">Add Task Today</h2>
-            <h2 class="text-md pl-2">Description:</h2>
-            <input class="px-2 w-full rounded-lg shadow-md" placeholder="What to do">
-            <div class="flex gap-1 w-full mt-5">
-              <button class="bg-green-300 active:bg-green-400 rounded-xl p-1 w-full">Add</button>
-              <button class="bg-red-300 active:bg-red-400 rounded-xl p-1 w-full">Cancel</button>
-            </div>
-      </div>
-
-        <!--Person-->
-            <div class="flex justify-between">
-            <h2 class="text-md font-semibold my-1">Person Engaged</h2>
-            <button>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
-  <path d="M7 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM14.5 9a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5ZM1.615 16.428a1.224 1.224 0 0 1-.569-1.175 6.002 6.002 0 0 1 11.908 0c.058.467-.172.92-.57 1.174A9.953 9.953 0 0 1 7 18a9.953 9.953 0 0 1-5.385-1.572ZM14.5 16h-.106c.07-.297.088-.611.048-.933a7.47 7.47 0 0 0-1.588-3.755 4.502 4.502 0 0 1 5.874 2.636.818.818 0 0 1-.36.98A7.465 7.465 0 0 1 14.5 16Z" />
+<body class="bg-white flex flex-col  items-center justify-center">
+  <div id="app" class="bg-[url('/thumbnails/bgimage1.png')] bg-contain w-80 h-[620px] pb-1 rounded-xl shadow-2xl border-4 border-gray-300 flex flex-col">
+    <!-- App Header -->
+    <div class="px-4 py-2 flex items-center justify-between">
+      <span class="font-semibold text-lg">Not 4Get</span>
+      <button class="focus:outline-none" @click="alertMenu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+             viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round"
+                d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+    <div class="mx-auto justify-center items-center px-4 w-full">
+      <!-- Projects -->
+      <div class="flex justify-between">
+        <h2 class="text-lg ml-2 my-1 font-semibold">Goals</h2>
+        <div class="flex justify-between">
+          <p class="my-auto mr-2">{{ todayDate }}</p>
+        <button @click="showProjectForm = true">
+          <!-- Add SVG -->
+          <svg id='circle-plus_20' width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><rect width='20' height='20' stroke='none' fill='#000000' opacity='0'/>
+<g transform="matrix(0.83 0 0 0.83 10 10)" >
+<g style="" >
+<g transform="matrix(1 0 0 1 0 0)" >
+<path style="stroke: none; stroke-width: 2; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;" transform=" translate(-12, -12)" d="M 0 0 L 24 0 L 24 24 L 0 24 z" stroke-linecap="round" />
+</g>
+<g transform="matrix(1 0 0 1 -0.1 -0.1)" >
+<circle style="stroke: rgb(0,0,0); stroke-width: 1.8072289156626506; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;" cx="0" cy="0" r="9" />
+</g>
+<g transform="matrix(1 0 0 1 -0.1 -0.1)" >
+<line style="stroke: rgb(0,0,0); stroke-width: 1.8072289156626506; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;" x1="-3" y1="0" x2="3" y2="0" />
+</g>
+<g transform="matrix(1 0 0 1 -0.1 -0.1)" >
+<line style="stroke: rgb(0,0,0); stroke-width: 1.8072289156626506; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;" x1="0" y1="-3" x2="0" y2="3" />
+</g>
+</g>
+</g>
 </svg>
-
-            </button>
-            </div>
-            <!--list person here, scroll-->
-          <div class="flex gap-1 overflow-x-scroll pb-1">
-            <div class="bg-white rounded-xl px-2 py-1 flex w-fit shrink-0">
-            <img src="thumbnails/photo1.jpg" id="personphoto" class="rounded-full w-9 h-9 my-auto">
-            <div class="ml-2">
-              <h2 id="personname" class="text-sm font-semibold">Mr. Fakhrul</h2>
-              <p id="personjob" class="text-sm">Lead Engineer</p>
-            </div>
-            </div>
-            <div class="bg-white rounded-xl px-2 py-1 flex w-fit shrink-0">
-            <img src="thumbnails/photo2.png" class="rounded-full w-9 h-9 my-auto">
-            <div id="persondid" class="ml-2">
-              <h2 id="person.name" class="text-sm font-semibold">Mr. Jaafar</h2>
-              <p id="person.position" class="text-sm">Manager</p>
-            </div>
-            </div>
-            <div class="bg-white rounded-xl px-2 py-1 flex w-fit shrink-0">
-            <img src="thumbnails/menphoto.png" class="rounded-full w-9 h-9 my-auto">
-            <div id="persondid" class="ml-2">
-              <h2 id="person.name" class="text-sm font-semibold">Mr. Azhar</h2>
-              <p id="person.position" class="text-sm">Supervisor</p>
-            </div>
+        </button>
+        </div>
+      </div>
+      <!-- Projects List -->
+      <div class="pr-1 overflow-y-scroll h-[480px] space-y-1">
+        <div v-for="(project, i) in projects" :key="project.title" class="gap-2 bg-blue-50 rounded-xl px-1 pb-2 mb-2">
+          <div class="flex justify-between">
+            <h2 class="text-lg pb-1 font-semibold pl-2">{{ project.title }}</h2>
+            <!--edit delete btn-->
+            <div class="flex mr-2 gap-3">
+              <button @click="editProject(i)">
+                <!-- Edit SVG -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-4">
+                  <path d="m5.433 13.917 1.262-3.155A4 4 0 0 1 7.58 9.42l6.92-6.918a2.121 2.121 0 0 1 3 3l-6.92 6.918c-.383.383-.84.685-1.343.886l-3.154 1.262a.5.5 0 0 1-.65-.65Z" />
+                  <path d="M3.5 5.75c0-.69.56-1.25 1.25-1.25H10A.75.75 0 0 0 10 3H4.75A2.75 2.75 0 0 0 2 5.75v9.5A2.75 2.75 0 0 0 4.75 18h9.5A2.75 2.75 0 0 0 17 15.25V10a.75.75 0 0 0-1.5 0v5.25c0 .69-.56 1.25-1.25 1.25h-9.5c-.69 0-1.25-.56-1.25-1.25v-9.5Z" />
+                </svg>
+              </button>
+              <button @click="deleteProject(i)">
+                <!-- Delete SVG -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-4">
+                  <path fill-rule="evenodd" d="M8.75 1A2.75 2.75 0 0 0 6 3.75v.443c-.795.077-1.584.176-2.365.298a.75.75 0 1 0 .23 1.482l.149-.022.841 10.518A2.75 2.75 0 0 0 7.596 19h4.807a2.75 2.75 0 0 0 2.742-2.53l.841-10.52.149.023a.75.75 0 0 0 .23-1.482A41.03 41.03 0 0 0 14 4.193V3.75A2.75 2.75 0 0 0 11.25 1h-2.5ZM10 4c.84 0 1.673.025 2.5.075V3.75c0-.69-.56-1.25-1.25-1.25h-2.5c-.69 0-1.25.56-1.25 1.25v.325C8.327 4.025 9.16 4 10 4ZM8.58 7.72a.75.75 0 0 0-1.5.06l.3 7.5a.75.75 0 1 0 1.5-.06l-.3-7.5Zm4.34.06a.75.75 0 1 0-1.5-.06l-.3 7.5a.75.75 0 1 0 1.5.06l.3-7.5Z" clip-rule="evenodd" />
+                </svg>
+              </button>
             </div>
           </div>
-        
-</div>
+          <div class="px-1 pb-1 gap-1 w-full">
+             <div class="grid grid-cols-3 my-auto text-xs gap-1 mb-1">
+              <h2 class="bg-green-200 w-full rounded p-1 whitespace-nowrap ">
+                Start Date:
+                <p>{{ project.startDate }}</p>
+              </h2>
+              <h2 class="bg-teal-100 w-full rounded p-1 whitespace-nowrap ">
+                Client:
+                <p>{{ project.client }}</p>
+              </h2>
+              <!--add task form-->
+              <button @click="showTaskForm = true" class="button-link text-xs h-full bg-purple-100 rounded p-1 px-2">
+                Add Task
+              </button>
+              
+            </div>
+            <!-- todayTask Card -->
+              <div class="overflow-y-scroll space-y-1 pr-1 h-fit w-full">
+                <div v-for="(task, i) in todayTasks" :key="i" class="flex">
+                  <h2  class="bg-white rounded-lg px-2 w-full text-md whitespace-normal my-auto">{{ task }}
+                  </h2>
+                  <button @click="moveToComplete(i)">
+                    <svg id='Validation_Check_20' width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><rect width='20' height='20' stroke='none' fill='#000000' opacity='0'/>
+                      <g transform="matrix(1.23 0 0 1.23 10 10)" >
+                        <path style="stroke: rgb(0,0,0); stroke-width: 1.2195121951219512; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;" transform=" translate(-7, -7)" d="M 0.5 8.55 L 3.23 12.06 C 3.4166358959802876 12.302492672149954 3.704024324691863 12.446186886505743 4.009999999999999 12.450000000000001 C 4.310924513943725 12.453481734350973 4.597415561971884 12.321255096799515 4.79 12.090000000000002 L 13.5 1.55" stroke-linecap="round" />
+                      </g>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            <!--Completed Task-->
+            <div class="bg-orange-100 rounded p-1 shadow-sm mt-1">
+              <h2 class="text-xs">
+              Completed Task:
+              <p v-html="project.tasks"></p>
+              <!--display completed-->
+              <div v-for="(desc, i) in completeshow" :key="i" class="flex justify-between">
+                 <!--completed detail--> 
+                <div  class="flex justify-between">
+                  <svg id='Done_20' width='15' height='15' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><rect width='20' height='20' stroke='none' fill='#000000' opacity='0'/>
+                    <g transform="matrix(0.57 0 0 0.57 10 10)" >
+                    <path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,149,63); fill-rule: evenodd; opacity: 1;" transform=" translate(-16, -16)" d="M 2.003 18.003 L 2.003 14.003 L 6.003 14.003 L 6.003 16.003 L 8.003 16.003 L 8.003 18.003 L 10.003 18.003 L 10.003 20.003 L 14.003 20.003 L 14.003 18.003 L 16.003 18.003 L 16.003 16.003 L 18.003 16.003 L 18.003 14.003 L 20.003 14.003 L 20.003 12.003 L 22.003 12.003 L 22.003 10.003 L 24.003 10.003 L 24.003 8.003 L 26.003 8.003 L 26.003 6.003 L 30.003 6.003 L 30.003 10.003 L 28.003 10.003 L 28.003 12.003 L 26.003 12.003 L 26.003 14.003 L 24.003 14.003 L 24.003 16.003 L 22.003 16.003 L 22.003 18.003 L 20.003 18.003 L 20.003 20.003 L 18.003 20.003 L 18.003 22.003 L 16.003 22.003 L 16.003 24.003 L 14.003 24.003 L 14.003 26.003 L 10.003 26.003 L 10.003 24.003 L 8.003 24.003 L 8.003 22.003 L 6.003 22.003 L 6.003 20.003 L 4.003 20.003 L 4.003 18.003 L 2.003 18.003 z" stroke-linecap="round" />
+                    </g>
+                </svg>
+                <p v-if="completeshow" class="ml-2 text-md">{{ desc }}</p>
+                </div>
+                <button @click="removeComplete(i)">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="15" height="15" viewBox="0 0 48 48">
+                    <path d="M 20 2 C 18.35503 2 17 3.3550302 17 5 L 17 7 L 4 7 A 1.0001 1.0001 0 1 0 4 9 L 17.832031 9 A 1.0001 1.0001 0 0 0 18.158203 9 L 29.832031 9 A 1.0001 1.0001 0 0 0 30.158203 9 L 44 9 A 1.0001 1.0001 0 1 0 44 7 L 31 7 L 31 5 C 31 3.3550302 29.64497 2 28 2 L 20 2 z M 20 4 L 28 4 C 28.56503 4 29 4.4349698 29 5 L 29 7 L 19 7 L 19 5 C 19 4.4349698 19.43497 4 20 4 z M 6.9804688 10.986328 A 1.0001 1.0001 0 0 0 5.9941406 12.09375 L 8.6640625 40.462891 C 8.900709 43.030242 11.061274 45 13.640625 45 L 34.359375 45 C 36.938726 45 39.099291 43.030242 39.335938 40.462891 L 39.335938 40.460938 L 42.005859 12.09375 A 1.0004955 1.0004955 0 1 0 40.013672 11.90625 L 37.34375 40.275391 A 1.0001 1.0001 0 0 0 37.34375 40.279297 C 37.199488 41.851004 35.939375 43 34.359375 43 L 13.640625 43 C 12.060625 43 10.800512 41.850998 10.65625 40.279297 A 1.0001 1.0001 0 0 0 10.65625 40.275391 L 7.9863281 11.90625 A 1.0001 1.0001 0 0 0 6.9804688 10.986328 z"></path>
+                    </svg>
+                </button>
+              </div>
+            </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      
+    
+    
+    <!-- Add Project Form -->
+      <div v-if="showProjectForm" class="fixed inset-10 bg-black bg-opacity-30 rounded-2xl mx-auto size-64 h-fit p-2 items-center justify-center z-50">
+        <h2 class="text-lg text-white text-center font-semibold pb-2">Add Your Goal</h2>
+        <h2 class="text-md font-semibold text-white pl-2">Title:</h2>
+        <input v-model="newProject.title" class="px-2 w-full rounded-lg shadow-md" placeholder="Goal/Project/etc:.">
+        <h2 class="text-md font-semibold text-white pl-2 mt-2">Date:</h2>
+        <input v-model="newProject.startDate" class="px-2 w-full rounded-lg shadow-md" placeholder="Deadline. If any">
+        <h2 class="text-md font-semibold text-white pl-2 mt-2">Person:</h2>
+        <input v-model="newProject.client" class="px-2 w-full rounded-lg shadow-md" placeholder="Anyone involve. If any">
+        <div class="flex gap-1 w-full mt-5">
+          <button @click="addProject" class="bg-green-300 active:bg-green-400 rounded-xl p-1 w-full">Add</button>
+          <button @click="showProjectForm = false" class="bg-red-300 active:bg-red-400 rounded-xl p-1 w-full">Cancel</button>
+        </div>
+      </div>
+    
 
-<script src="script.js"></script>
+      <!-- Add Task list -->
+      <div v-if="showTaskForm" class="fixed inset-20 bg-cyan-100 bg-opacity-90 rounded-2xl mx-auto size-64 h-fit p-2 shadow-lg items-center justify-center z-50">
+        <h2 class="text-lg text-center font-semibold pb-2">Add Task Today</h2>
+        <h2 class="text-md pl-2">Description:</h2>
+        <input v-model="newTaskdesc" class="px-2 w-full rounded-lg shadow-md" placeholder="What to do" @keyup.enter="addTask">
+        <div class="flex gap-1 w-full mt-5">
+          <button @click="addTask" class="bg-green-300 active:bg-green-400 rounded-xl p-1 w-full">Add</button>
+          <button @click="showTaskForm = false" class="bg-red-300 active:bg-red-400 rounded-xl p-1 w-full">Cancel</button>
+        </div>
+      </div>      
+    </div>
+    </div>
+  </div>
+      
+
+  <script src="script.js"></script>
 </body>
 </html>
