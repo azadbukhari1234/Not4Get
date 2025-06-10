@@ -1,7 +1,8 @@
-const { createApp } = Vue
+const { createApp, ref } = Vue;
 
     createApp({
       data() {
+        
         return {
           myData: [],
           todayDate: new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }),
@@ -9,7 +10,8 @@ const { createApp } = Vue
             {
               title: 'Add Goal',
               startDate: '',
-              client: '',            
+              client: '',
+              task: []       
             },
           ],
           showProjectForm: false,
@@ -21,7 +23,7 @@ const { createApp } = Vue
           
           todayTasks: [],
           completeshow: [],
-          
+
         };
       },
       methods: {

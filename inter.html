@@ -90,7 +90,7 @@
             <!-- todayTask Card -->
               <div class="overflow-y-scroll space-y-1 pr-1 h-fit w-full">
                 <div v-for="(task, i) in todayTasks" :key="i" class="flex">
-                  <h2  class="bg-white rounded-lg px-2 w-full text-md whitespace-normal my-auto">{{ task }}
+                  <h2 v-model="gettask" class="bg-white rounded-lg px-2 w-full text-md whitespace-normal my-auto">{{ task }}
                   </h2>
                   <button @click="moveToComplete(i)">
                     <svg id='Validation_Check_20' width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><rect width='20' height='20' stroke='none' fill='#000000' opacity='0'/>
