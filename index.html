@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full">
 <head>
   <meta charset="UTF-8">
   <title>Not 4Get</title>
@@ -7,7 +7,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
-<body class="flex items-center justify-center">
+<body class="h-full flex items-center justify-center">
   <div id="app" class="bg-[url('/thumbnails/bgimage1.png')] bg-cover w-full h-full pb-1 rounded-xl shadow-2xl flex flex-col">
     <!-- App Header -->
     <div class="px-4 py-2 flex items-center justify-between">
@@ -50,7 +50,7 @@
         </div>
       </div>
       <!-- Projects List -->
-      <div class="pr-1 overflow-y-scroll h-[600px] space-y-1">
+      <div class="pr-1 overflow-y-auto flex-1 space-y-1">
         <div v-for="(project, i) in projects" :key="project.title" class="gap-2 bg-blue-50 rounded-xl px-1 pb-2 mb-2">
           <div class="flex justify-between">
             <h2 class="text-lg pb-1 font-semibold pl-2">{{ project.title }}</h2>
