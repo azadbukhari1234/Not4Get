@@ -6,22 +6,17 @@ const { createApp, ref } = Vue;
         return {
           myData: [],
           todayDate: new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }),
-          projects: [
-            {
-              title: 'Add Goal',
-              startDate: '',
-              client: '',
-              task: []       
-            },
-          ],
+          projects: [],
+          newProject: { id: '', title: '', startDate: '', client: '', task: [] },
+          
+          showprojectbox: false,
           showProjectForm: false,
-          newProject: { title: '', startDate: '', client: '' },
           showTaskForm: false,
-          newTaskdesc: '', 
-          todayTasks: [],
-
           
           todayTasks: [],
+          newTaskdesc: '', 
+          
+          
           completeshow: [],
 
         };
@@ -30,10 +25,13 @@ const { createApp, ref } = Vue;
         alertMenu() {
           alert("Menu button clicked!");
         },
+        
         addProject() {
           if (this.newProject.title) {
             this.projects.push({ ...this.newProject });
-            this.newProject = { title: '', startDate: '', client: '' };
+            this.newProject = { title: '', startDate: '', client: '', task: [] };
+            this.newProject.title = '',
+            this.showprojectbox = true;
             this.showProjectForm = false;
           }
         },
