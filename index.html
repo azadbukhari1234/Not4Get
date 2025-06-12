@@ -7,25 +7,15 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
-<body class="h-full flex items-center justify-center">
-  <div id="app" class="bg-[url('/thumbnails/bgimage1.png')] bg-cover w-full h-full pb-1 rounded-xl shadow-2xl flex flex-col">
-    <!-- App Header -->
-    <div class="px-4 py-2 flex items-center justify-between">
-      <span class="font-semibold text-lg">Not 4Get</span>
-      <button class="focus:outline-none" @click="alertMenu">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
-             viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round"
-                d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
-      </button>
-    </div>
+<body class="h-full items-center justify-center">
+  <div id="app" class="bg-white w-full h-full pb-1 rounded-xl shadow-2xl">{{ currentTime}}
     <div class="mx-auto justify-center items-center px-4 w-full">
-      <!-- Projects -->
-      <div class="flex justify-between">
-        <h2 class="text-lg ml-2 my-1 font-semibold">Goals</h2>
-        <div class="flex justify-between">
-          <p class="my-auto mr-2">{{ todayDate }}</p>
+      <h2 class="text-center py-5 text-3xl">Welcome back {{ name }} !</h2>
+      <!-- Dashboard header -->
+      <div class="flex justify-between mb-3">
+        <h2 class="text-2xl ml-2 my-1 font-semibold">Dashboard</h2>
+        <div class="flex justify-between ">
+        <p class=" px-3 text-lg my-auto">{{ todayDate }}</p>
         <button @click="showProjectForm = true">
           <!-- Add SVG -->
           <svg id='circle-plus_20' width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><rect width='20' height='20' stroke='none' fill='#000000' opacity='0'/>
@@ -50,12 +40,33 @@
         </div>
       </div>
       <!-- Projects List -->
-      <div  class="pr-1 overflow-y-auto flex-1 space-y-1">
-        <div v-if="showprojectbox" v-for="(project, i) in projects" :key="project.title" class="gap-2 bg-blue-50 rounded-xl px-1 pb-2 mb-2">
-          <div class="flex justify-between">
-            <h2 class="text-lg pb-1 font-semibold pl-2">{{ project.title }}</h2>
-            <!--edit delete btn-->
-            <div class="flex mr-2 gap-3">
+      <div class="pr-1 overflow-y-auto h-[450px] space-y-1">
+        <div v-if="showprojectbox" v-for="(project, i) in projects" :key="project.title" class="gap-2 bg-blue-50 rounded-2xl shadow-md px-3 py-3 mb-2">
+          <div class="flex justify-between my-3">
+            <h2 class="text-lg font-semibold pl-2 pb-3">{{ project.title }}</h2>
+            <!--addTask button, edit delete btn-->
+            <div class="flex mr-2 gap-3 my-auto">
+              <button @click="showTaskForm = true" class="button-link text-xs px-3 py-1 bg-purple-200 rounded-full flex justify-between gap-1 my-auto">
+                Task
+                <svg id='circle-plus_20' width='18' height='18' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><rect width='20' height='20' stroke='none' fill='#000000' opacity='0'/>
+<g transform="matrix(0.83 0 0 0.83 10 10)" >
+<g style="" >
+<g transform="matrix(1 0 0 1 0 0)" >
+<path style="stroke: none; stroke-width: 2; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;" transform=" translate(-12, -12)" d="M 0 0 L 24 0 L 24 24 L 0 24 z" stroke-linecap="round" />
+</g>
+<g transform="matrix(1 0 0 1 -0.1 -0.1)" >
+<circle style="stroke: rgb(0,0,0); stroke-width: 1.8072289156626506; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;" cx="0" cy="0" r="9" />
+</g>
+<g transform="matrix(1 0 0 1 -0.1 -0.1)" >
+<line style="stroke: rgb(0,0,0); stroke-width: 1.8072289156626506; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;" x1="-3" y1="0" x2="3" y2="0" />
+</g>
+<g transform="matrix(1 0 0 1 -0.1 -0.1)" >
+<line style="stroke: rgb(0,0,0); stroke-width: 1.8072289156626506; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;" x1="0" y1="-3" x2="0" y2="3" />
+</g>
+</g>
+</g>
+                </svg>
+              </button>
               <button @click="editProject(i)">
                 <!-- Edit SVG -->
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-4">
@@ -72,26 +83,20 @@
             </div>
           </div>
           <div class="px-1 pb-1 gap-1 w-full">
-             <div class="grid grid-cols-3 my-auto text-xs gap-1 mb-1">
-              <h2 class="bg-green-200 w-full rounded p-1 whitespace-nowrap ">
+             <div class="grid grid-cols-2 my-auto text-xs gap-1 mb-1">
+              <h2 class="bg-green-200 w-full p-2 rounded flex">
                 Start Date:
-                <p>{{ project.startDate }}</p>
+                <p class="pl-2">{{ project.startDate }}</p>
               </h2>
-              <h2 class="bg-teal-100 w-full rounded p-1 whitespace-nowrap ">
+              <h2 class="bg-teal-100 w-full p-2 rounded flex ">
                 Client:
-                <p>{{ project.client }}</p>
+                <p class="pl-2">{{ project.client }}</p>
               </h2>
-              <!--add task form-->
-              <button @click="showTaskForm = true" class="button-link text-xs h-full bg-purple-100 rounded p-1 px-2">
-                Add Task
-              </button>
-              
             </div>
             <!-- todayTask Card -->
               <div class="overflow-y-scroll space-y-1 pr-1 h-fit w-full">
-                <div v-for="(task, i) in todayTasks" :key="i" class="flex">
-                  <h2 v-model="gettask" class="bg-white rounded-lg px-2 w-full text-md whitespace-normal my-auto">{{ task }}
-                  </h2>
+                <div v-for="(task, i) in todayTasks" :key="task.desc" class="flex">
+                  <h2 class="bg-white rounded-lg px-2 w-full text-md whitespace-normal my-auto flex justify-between">{{ task }}
                   <button @click="moveToComplete(i)">
                     <svg id='Validation_Check_20' width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><rect width='20' height='20' stroke='none' fill='#000000' opacity='0'/>
                       <g transform="matrix(1.23 0 0 1.23 10 10)" >
@@ -99,6 +104,8 @@
                       </g>
                     </svg>
                   </button>
+                  </h2>
+                  
                 </div>
               </div>
             <!--Completed Task-->
@@ -133,26 +140,26 @@
     
     
     <!-- Add Project Form -->
-      <div v-if="showProjectForm" class="fixed inset-10 bg-black bg-opacity-30 rounded-2xl mx-auto size-64 h-fit p-2 items-center justify-center z-50">
-        <h2 class="text-lg text-white text-center font-semibold pb-2">Add Your Goal</h2>
-        <h2 class="text-md font-semibold text-white pl-2">Title:</h2>
+      <div v-if="showProjectForm" class="fixed inset-10 bg-gray-100 rounded-2xl mx-auto size-80 h-fit p-3 items-center justify-center z-50 shadow-lg">
+        <h2 class="text-lg text-center py-3 font-semibold pb-2">Add Your Goal</h2>
+        <h2 class="text-md font-semibold pl-2">Title:</h2>
         <input v-model="newProject.title" class="px-2 w-full rounded-lg shadow-md" placeholder="Goal/Project/etc:.">
-        <h2 class="text-md font-semibold text-white pl-2 mt-2">Date:</h2>
+        <h2 class="text-md font-semibold pl-2 mt-2">Date:</h2>
         <input v-model="newProject.startDate" class="px-2 w-full rounded-lg shadow-md" placeholder="Deadline. If any">
-        <h2 class="text-md font-semibold text-white pl-2 mt-2">Person:</h2>
+        <h2 class="text-md font-semibold pl-2 mt-2">Person:</h2>
         <input v-model="newProject.client" class="px-2 w-full rounded-lg shadow-md" placeholder="Anyone involve. If any">
-        <div class="flex gap-1 w-full mt-5">
+        <div class="flex gap-1 w-full my-5">
           <button @click="addProject" class="bg-green-300 active:bg-green-400 rounded-xl p-1 w-full">Add</button>
           <button @click="showProjectForm = false" class="bg-red-300 active:bg-red-400 rounded-xl p-1 w-full">Cancel</button>
         </div>
       </div>
     
       <!-- Add Task list -->
-      <div v-if="showTaskForm" class="fixed inset-20 bg-cyan-100 bg-opacity-90 rounded-2xl mx-auto size-64 h-fit p-2 shadow-3xl items-center justify-center z-50">
-        <h2 class="text-lg text-center font-semibold pb-2">Add Task Today</h2>
+      <div v-if="showTaskForm" class="fixed inset-20 bg-cyan-100 bg-opacity-90 rounded-2xl mx-auto size-64 h-fit p-3 mb-3 shadow-2xl items-center justify-center z-50">
+        <h2 class="text-lg text-center font-semibold pt-3 pb-2">Add Task Today</h2>
         <h2 class="text-md pl-2">Description:</h2>
         <input v-model="newTaskdesc" class="px-2 w-full rounded-lg shadow-md" placeholder="What to do" @keyup.enter="addTask">
-        <div class="flex gap-1 w-full mt-5">
+        <div class="flex gap-1 w-full my-5">
           <button @click="addTask" class="bg-green-300 active:bg-green-400 rounded-xl p-1 w-full">Add</button>
           <button @click="showTaskForm = false" class="bg-red-300 active:bg-red-400 rounded-xl p-1 w-full">Cancel</button>
         </div>

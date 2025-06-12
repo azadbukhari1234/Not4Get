@@ -5,9 +5,11 @@ const { createApp, ref } = Vue;
         
         return {
           myData: [],
+          currentTime: new Date().toLocaleTimeString(),
           todayDate: new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }),
+          
           projects: [],
-          newProject: { id: '', title: '', startDate: '', client: '', task: [] },
+          newProject: { title: '', startDate: '', client: '', task: [] },
           
           showprojectbox: false,
           showProjectForm: false,
@@ -16,15 +18,17 @@ const { createApp, ref } = Vue;
           todayTasks: [],
           newTaskdesc: '', 
           
-          
           completeshow: [],
 
         };
       },
+      mounted() {
+        // Update time every second
+        setInterval(() => {
+          this.currentTime = new Date().toLocaleTimeString();
+        }, 1000);
+      },
       methods: {
-        alertMenu() {
-          alert("Menu button clicked!");
-        },
         
         addProject() {
           if (this.newProject.title) {
@@ -43,14 +47,15 @@ const { createApp, ref } = Vue;
         },
 
         addTask() {
-          if (this.newTaskdesc.trim() !== '') {
-            this.todayTasks.push(this.newTaskdesc.trim());
+          if (this.newTaskdesc) {
+            this.todayTasks.push(this.newTaskdesc);
             this.newTaskdesc = '';
+            
             this.showTaskForm = false;
           }
         },
         submitTask(i) {
-          alert("Submit: " + this.todayTasks[i].desc);
+          alert("Submit: " + this.Task[i].desc);
         },
         
         moveToComplete(i) {
