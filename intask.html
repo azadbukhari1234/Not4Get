@@ -2,7 +2,7 @@
 <html lang="en" class="h-full">
 <head>
   <meta charset="UTF-8">
-  <title>Not4Getindex</title>
+  <title>Not4Get intask</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -10,13 +10,19 @@
 <body class="h-full items-center justify-center">
   <div id="app" class="bg-white w-full h-full pb-4 rounded-xl shadow-2xl">{{ currentTime}}
     <div class="mx-auto justify-center items-center px-4 w-full">
-      <h2 class="text-center py-5 text-3xl">Welcome back {{ name }} !</h2>
+      <div class="flex justify-center gap-5">
+        <button onclick="window.location.href='index.html'" class="block" aria-label="search">
+        <svg width="30px" height="30px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path fill="#000000" d="M224 480h640a32 32 0 1 1 0 64H224a32 32 0 0 1 0-64z"/><path fill="#000000" d="m237.248 512 265.408 265.344a32 32 0 0 1-45.312 45.312l-288-288a32 32 0 0 1 0-45.312l288-288a32 32 0 1 1 45.312 45.312L237.248 512z"/></svg>
+      </button>
+      <h2 class="text-center py-5 text-3xl">Your Goal!</h2>
+      </div>
+      
       <!-- Dashboard header -->
       <div class="flex justify-between mb-3">
-        <h2 class="text-2xl ml-2 my-1 font-semibold">Program</h2>
+        <h2 class="text-2xl ml-2 my-1 font-semibold">List of task!</h2>
         <div class="flex justify-between ">
-        <p class=" px-3 text-lg my-auto">{{ todayDate }}</p>
-        <button @click="showProjectForm = true" aria-label="search">
+         <p class=" px-3 text-lg my-auto">{{ todayDate }}</p>
+          <button @click="showTaskForm = true" class="utton-link text-xs px-3 py-1 bg-purple-200 rounded-full flex justify-between gap-1 my-auto">Add
           <!-- Add SVG -->
           <svg id='circle-plus_20' width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><rect width='20' height='20' stroke='none' fill='#000000' opacity='0'/>
 <g transform="matrix(0.83 0 0 0.83 10 10)" >
@@ -35,57 +41,44 @@
 </g>
 </g>
 </g>
-</svg>
+          </svg>
         </button>
         </div>
       </div>
-      <!-- Projects List -->
-      <div class="pr-1 overflow-y-auto h-full space-y-1">
-        <div v-for="(project, pIndex) in projects" :key="project.title" class="gap-2 bg-blue-50 rounded-2xl shadow-md px-3 py-3 mb-2">
-          <a onclick="window.location.href='intask.html'" class="block">
-            <div class="flex justify-between my-3">
-            <h2 class="text-lg font-semibold pl-2 pb-3">{{ project.title }}</h2>
-            <button @click="deleteProject(i)" class="bg-white rounded-xl px-2" aria-label="close">
+      
+      <!-- Task List -->
+      <div class="pr-1 h-5/6">
+        <div v-for="(task, tIndex) in tasks" :key="task.desc" class="gap-2 bg-blue-100 rounded-2xl px-3 py-3 my-3">
+          <div class="flex justify-between my-auto overflow-y-auto">
+            <h2 class="text-lg pl-2">{{ task.desc }}</h2>
+            <div class="flex justify-between space-x-3">
+              <h2 class="text-lg pl-2">{{ dateaddtask }}</h2>
+              <button @click="deleteProject(i)" aria-label="close">
                 <!-- Delete SVG -->
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-4">
                   <path fill-rule="evenodd" d="M8.75 1A2.75 2.75 0 0 0 6 3.75v.443c-.795.077-1.584.176-2.365.298a.75.75 0 1 0 .23 1.482l.149-.022.841 10.518A2.75 2.75 0 0 0 7.596 19h4.807a2.75 2.75 0 0 0 2.742-2.53l.841-10.52.149.023a.75.75 0 0 0 .23-1.482A41.03 41.03 0 0 0 14 4.193V3.75A2.75 2.75 0 0 0 11.25 1h-2.5ZM10 4c.84 0 1.673.025 2.5.075V3.75c0-.69-.56-1.25-1.25-1.25h-2.5c-.69 0-1.25.56-1.25 1.25v.325C8.327 4.025 9.16 4 10 4ZM8.58 7.72a.75.75 0 0 0-1.5.06l.3 7.5a.75.75 0 1 0 1.5-.06l-.3-7.5Zm4.34.06a.75.75 0 1 0-1.5-.06l-.3 7.5a.75.75 0 1 0 1.5.06l.3-7.5Z" clip-rule="evenodd" />
                 </svg>
-              </button>
-          </div>
-          <div class="px-1 pb-1 gap-1 w-full">
-             <div class="grid grid-cols-2 my-auto text-xs gap-1 mb-1">
-              <h2 class="bg-green-200 w-full p-2 rounded flex">
-                Start Date:
-                <p v-else="startdatebox = true" class="pl-2 rounded-xl">{{ project.startDate }}</p>
-              </h2>
-              <h2 class="bg-teal-100 w-full p-2 rounded flex ">
-                Person:
-                <p v-else="project.client = true" class="pl-2">{{ project.client }}</p>
-              </h2>
+            </button>
             </div>
+            
           </div>
-          </a>
         </div>
       </div>
     </div>
       
     
     
-    <!-- Add Project Form -->
-      <div v-if="showProjectForm" class="fixed inset-10 bg-gray-100 rounded-2xl mx-auto size-80 h-fit p-3 items-center justify-center z-50 shadow-lg">
-        <h2 class="text-lg text-center py-3 font-semibold pb-2">Add Your Goal</h2>
-        <h2 class="text-md font-semibold pl-2">Title:</h2>
-        <input v-model="newProject.title" class="px-2 w-full rounded-lg shadow-md" placeholder="Goal/Project/etc:.">
-        <h2 class="text-md font-semibold pl-2 mt-2">Date:</h2>
-        <input v-model="newProject.startDate" class="px-2 w-full rounded-lg shadow-md" placeholder="Deadline. If any">
-        <h2 class="text-md font-semibold pl-2 mt-2">Person:</h2>
-        <input v-model="newProject.client" class="px-2 w-full rounded-lg shadow-md" placeholder="Anyone involve. If any">
+    <!-- Add Tasks Form -->
+      <div v-if="showTaskForm" class="fixed inset-10 bg-emerald-100 rounded-2xl mx-auto size-80 h-fit p-3 items-center justify-center z-50 shadow-lg">
+        <h2 class="text-lg text-center py-3 font-semibold pb-2">Add To Do list</h2>
+        <h2 class="text-md font-semibold pl-2 pb-2">What to-do:</h2>
+        <input v-model="newtask.desc" class="px-2 w-full rounded-lg shadow-md" placeholder="Task/Description/etc:.">
         <div class="flex gap-1 w-full my-5">
-          <button @click="addProject" class="bg-green-300 active:bg-green-400 rounded-xl p-1 w-full">Add</button>
-          <button @click="showProjectForm = false" class="bg-red-300 active:bg-red-400 rounded-xl p-1 w-full">Cancel</button>
+          <button @click="addTask" class="bg-green-300 active:bg-green-400 rounded-xl p-1 w-full">Add</button>
+          <button @click="showTaskForm = false" class="bg-red-300 active:bg-red-400 rounded-xl p-1 w-full">Cancel</button>
         </div>
       </div>
-    
+          
     <!--close frame-->
      </div>
     </div>

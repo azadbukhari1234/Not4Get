@@ -6,19 +6,20 @@ const { createApp, ref } = Vue;
         return {
           myData: [],
           currentTime: new Date().toLocaleTimeString(),
+          currentDate: new Date(),
           todayDate: new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }),
           
           projects: [],
           newProject: { title: '', startDate: '', client: '', task: [] },
           
+          tasks: [],
+          newtask: { desc: ''},
+          
           showprojectbox: false,
           showProjectForm: false,
           showTaskForm: false,
-          
-          todayTasks: [],
-          newTaskdesc: '', 
-          
-          completeshow: [],
+
+          selectedProjectForTask: null, 
 
         };
       },
@@ -27,7 +28,22 @@ const { createApp, ref } = Vue;
         setInterval(() => {
           this.currentTime = new Date().toLocaleTimeString();
         }, 1000);
+        
+        const savedProjects = localStorage.getItem('projects');
+        if (savedProjects) {
+            this.projects = JSON.parse(savedProjects);
+        }
       },
+      // add date to the task
+      computed: {
+        dateaddtask() {
+          return this.currentDate.toLocaleDateString('en-US', {
+            day: '2-digit',
+            month: '2-digit'
+          });
+        }
+      },
+
       methods: {
         
         addProject() {
@@ -35,6 +51,7 @@ const { createApp, ref } = Vue;
             this.projects.push({ ...this.newProject });
             this.newProject = { title: '', startDate: '', client: '', task: [] };
             this.newProject.title = '',
+            this.newtask.desc = '',
             this.showprojectbox = true;
             this.showProjectForm = false;
           }
@@ -42,43 +59,38 @@ const { createApp, ref } = Vue;
         deleteProject(i) {
           this.projects.splice(i, 1);
         },
-        editProject(i) {
-          alert("Edit project: " + this.projects[i].title);
-        },
-
-        addTask() {
-          if (this.newTaskdesc) {
-            this.todayTasks.push(this.newTaskdesc);
-            this.newTaskdesc = '';
-            
+        
+        addtask(project) {
+          if (this.newtask.desc) {
+            this.tasks.push(this.newtask.desc);
+            this.newtask.desc = '',
             this.showTaskForm = false;
           }
         },
-        submitTask(i) {
-          alert("Submit: " + this.Task[i].desc);
-        },
-        
-        moveToComplete(i) {
-          const task = this.todayTasks[i];
-          this.completeshow.push(task);
-          this.todayTasks.splice(i, 1);
-        },
-        removeComplete(i) {
-          this.completeshow.splice(i, 1);
-        },
-      
       },
       
       created() {
         // Load from localStorage on start
-        const saved = localStorage.getItem('myData')
-        if (saved) this.myData = JSON.parse(saved)
+        const savedProjects = localStorage.getItem('projects');
+        if (savedProjects) this.projects = JSON.parse(savedProjects);
+
+        const savedTasks = localStorage.getItem('tasks');
+        if (savedTasks) this.Tasks = JSON.parse(savedTasks);
+
+        const saved = localStorage.getItem('myData');
+        if (saved) this.myData = JSON.parse(saved);
       },
       watch: {
-        // Watch for changes and save
+        // for changes and save
         myData: {
           handler(newVal) {
-            localStorage.setItem('myData', JSON.stringify(newVal))
+            localStorage.setItem('myData', JSON.stringify(newVal));
+          },
+          deep: true
+        },
+        projects: {
+          handler(newVal) {
+            localStorage.setItem('projects', JSON.stringify(newVal));
           },
           deep: true
         }
