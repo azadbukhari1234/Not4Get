@@ -10,17 +10,10 @@ const { createApp, ref } = Vue;
           todayDate: new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }),
           
           projects: [],
-          newProject: { title: '', startDate: '', client: '', task: [] },
-          
-          tasks: [],
-          newtask: { desc: ''},
-          
+          newProject: { title: '', startDate: '', client: '' },
           showprojectbox: false,
           showProjectForm: false,
-          showTaskForm: false,
-
-          selectedProjectForTask: null, 
-
+        
         };
       },
       mounted() {
@@ -34,9 +27,10 @@ const { createApp, ref } = Vue;
             this.projects = JSON.parse(savedProjects);
         }
       },
-      // add date to the task
+
+      // add date to the projects
       computed: {
-        dateaddtask() {
+        dateaddprojects() {
           return this.currentDate.toLocaleDateString('en-US', {
             day: '2-digit',
             month: '2-digit'
@@ -49,9 +43,8 @@ const { createApp, ref } = Vue;
         addProject() {
           if (this.newProject.title) {
             this.projects.push({ ...this.newProject });
-            this.newProject = { title: '', startDate: '', client: '', task: [] };
+            this.newProject = { title: '', startDate: '', client: ''};
             this.newProject.title = '',
-            this.newtask.desc = '',
             this.showprojectbox = true;
             this.showProjectForm = false;
           }
@@ -60,22 +53,12 @@ const { createApp, ref } = Vue;
           this.projects.splice(i, 1);
         },
         
-        addtask(project) {
-          if (this.newtask.desc) {
-            this.tasks.push(this.newtask.desc);
-            this.newtask.desc = '',
-            this.showTaskForm = false;
-          }
-        },
+        
       },
-      
       created() {
         // Load from localStorage on start
         const savedProjects = localStorage.getItem('projects');
         if (savedProjects) this.projects = JSON.parse(savedProjects);
-
-        const savedTasks = localStorage.getItem('tasks');
-        if (savedTasks) this.Tasks = JSON.parse(savedTasks);
 
         const saved = localStorage.getItem('myData');
         if (saved) this.myData = JSON.parse(saved);
@@ -91,6 +74,12 @@ const { createApp, ref } = Vue;
         projects: {
           handler(newVal) {
             localStorage.setItem('projects', JSON.stringify(newVal));
+          },
+          deep: true
+        },
+        tasks: {
+          handler(newVal) {
+            localStorage.setItem('tasks', JSON.stringify(newVal));
           },
           deep: true
         }
